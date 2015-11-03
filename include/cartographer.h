@@ -14,7 +14,8 @@
 char	**malloc_tab(char **, int);
 char	**fill_tab(char **, int);
 char	**fill_one(char **, int, int, int);
-char	**check_tab(char **, int);
-t_carto	*init_struct(t_carto *, int);
+char	**check_tab(char **, int, int, int);
+char	**check_two(char **, int, int);
+char	**check_exit(char **, int, int);
 
 #endif

@@ -30,7 +30,6 @@ int	main(int ac, char **av)
 		else
 		{
 		 	tab = malloc_tab(tab, size);
-		 	my_put_nbr(size);
 			my_putstr("Welcome to Dedale's Amazing Maze\nGenerating a Maze of size ");
 			my_put_nbr(size);
 			my_putstr(" ...\n");

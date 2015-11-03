@@ -56,15 +56,12 @@ void	print_south(int size, int exit_orientation, int exit_position)
 	my_putstr("X\n");
 }
 
-void	print_tab(char ** tab, int size)
+void	print_tab(char ** tab, int size, int exit_orientation, int exit_position)
 {
 	int	i;
-	int	exit_position;
-	int	exit_orientation;
+
 
 	i = 0;
-	exit_orientation = rand()%4;
-	exit_position = rand()%size;
 	print_north(size, exit_orientation, exit_position);
 	while (i < size)
 	 {

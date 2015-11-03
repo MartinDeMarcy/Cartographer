@@ -14,8 +14,14 @@
 
 int	*generate_maze(tab, size)
 {
+	int	exit_position;
+	int	exit_orientation;
+	
+	exit_orientation = rand()%4;
+	exit_position = rand()%size;
 	tab = fill_tab(tab, size);
-	print_tab(tab, size);
+	check_tab(tab, size, exit_orientation, exit_position);
+	print_tab(tab, size, exit_orientation, exit_position);
 	return (0);
 }
 
