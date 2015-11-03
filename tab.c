@@ -28,7 +28,7 @@ char	**malloc_tab(char **tab, int size)
   return (tab);
 }
 
-char	**fill_tab(char **tab, int size)
+char	**fill_tab(char **tab, int size, int seed)
 {
 	int	random;
 	int	i;
@@ -36,15 +36,18 @@ char	**fill_tab(char **tab, int size)
 	int	center;
 	char	*legit_char;
 	
-	legit_char = "X ";
+
+	legit_char = "XXXXXXXXX           ";
 	i = 0;
+	random = my_random(seed);
 	center = size / 2;
 	while (i < size)
 	 {
 		j = 0;
 		while (j < size)
 		{
-		  tab[i][j] = legit_char[rand()%2];
+			random = my_random(random);
+		  tab[i][j] = legit_char[random%20];
 		  if (j == center)
 		  	if (i == center)
 		  		tab[i][j] = 32;

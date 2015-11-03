@@ -21,7 +21,5 @@ void	my_puterr(char *str)
 	
 	i = 0;
 	while (str[i])
-	{
 		my_putchar_err(str[i++]);
-	}
 }

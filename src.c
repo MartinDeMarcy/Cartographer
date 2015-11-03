@@ -21,9 +21,7 @@ void	my_putstr(char *str)
 	
 	i = 0;
 	while (str[i])
-	{
 		my_putchar(str[i++]);
-	}
 }
 
 int	my_strlen(char *str)

@@ -23,12 +23,9 @@ void	print_north(int size, int exit_orientation, int exit_position)
 	while (i < size)
 	 {
 		if ((exit_orientation == 0) && (exit_position == i))
-		{
 			my_putchar(32);
-		}
-		else {
+		else
 			my_putchar('X');
-		}
 		i++;
 	 }
 	my_putstr("X\n");
@@ -45,12 +42,9 @@ void	print_south(int size, int exit_orientation, int exit_position)
 	while (i < size)
 	 {
 		if ((exit_orientation == 2) && (exit_position == i))
-		{
 			my_putchar(32);
-		}
-		else {
+		else
 			my_putchar('X');
-		}
 		i++;
 	 }
 	my_putstr("X\n");
@@ -66,22 +60,14 @@ void	print_tab(char ** tab, int size, int exit_orientation, int exit_position)
 	while (i < size)
 	 {
 	 	if ((exit_orientation == 3) && (exit_position == i))
-	 	{
 	 		my_putchar(32);
-	 	}
 	 	else
-	 	{
 			my_putchar('X');
-		}
 		my_putstr(tab[i]);
 		if ((exit_orientation == 1) && (exit_position == i))
-	 	{
 	 		my_putchar(32);
-	 	}
 	 	else
-	 	{
 			my_putchar('X');
-		}
 		my_putchar('\n');
 		i++;
 	 }

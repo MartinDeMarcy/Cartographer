@@ -16,7 +16,6 @@ int	main(int ac, char **av)
 {
 	int size;
 	char	**tab;
-	t_carto	*carto;
 	
 	srand (time(NULL));
 	if (ac == 2)
@@ -41,8 +40,7 @@ int	main(int ac, char **av)
 		my_puterr("Usage: ./dedale size(9-29)\n");
 		return (0);
 	}
-	free(carto);
-	  return (0);
+	return (0);
 }
 
 int	checker(char *str)
@@ -55,18 +53,12 @@ int	checker(char *str)
 	while (str[i])
 	{
 		if ((str[i] >= 48) && (str[i] <= 57))
-		{ 
 			i++;
-		}
 		else
-		{
 			return (1);
-		}
 	}
 	if (is_odd(str) == 1)
-	{
 		return (1);
-	}
 	size = my_getnbr(str);
 	return (size);
 }
@@ -79,12 +71,8 @@ int	is_odd(char *str)
 	length = my_strlen(str) - 1;
 	i = 0;
 	if ((str[length] == 48) || (str[length] == 50) || (str[length] == 52))
-	{
 		return (1);
-	}
 	else if ((str[length] == 54)  || (str[length] == 56))
-	{
 		return (1);
-	}
 	return (0);
 }

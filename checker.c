@@ -24,20 +24,19 @@ char	**check_tab(char **tab, int size, int exit_orientation, int exit_position)
 		j = 0;
 		while (j < size)
 		{
-			check_one(tab, i, j);
+			tab = check_one(tab, i, j, (size - 1));
 		  j++;
 		}
 		i++;
 	 }
-	 tab = check_exit(tab, exit_orientation, exit_position);
+	 tab = check_exit(tab, exit_orientation, exit_position, (size -1));
 	return (tab);
 }
 
-int	check_one(char **tab, int i, int j)
+char	**check_one(char **tab, int i, int j, int size)
 {
-	int	random;
-	
-	random = rand()%2;
+	if (tab[i][j] == 'X' && (size < 15))
+		return (tab);
 	if (i == 0)
 	{
 		if (j == 0)
@@ -46,67 +45,105 @@ int	check_one(char **tab, int i, int j)
 				{
 					tab[i + 1][j] = ' ';
 					tab[i][j + 1] = ' ';
-					return (1);
+					return (tab);
+				}
+		}
+		else if (j == size)
+		{
+			if ((tab[i + 1][j] == 'X') && (tab[i][j - 1] == 'X')) /* Pour la case en haut a droite quand i = 0 et j = 27 */
+				{
+					tab[i + 1][j] = ' ';
+					tab[i][j - 1] = ' ';
+					return (tab);
 				}
 		}
 		else
 		{
-			if ((tab[i][j + 1] == 'X') && (tab[i][j + 1] == 'X') && (tab[i][j - 1] == 'X')) /* Pour la derniere ligne */
+			if ((tab[i][j + 1] == 'X') && (tab[i][j + 1] == 'X') && (tab[i][j - 1] == 'X')) /* Pour la premiere ligne quand i = 0*/
 			{
 				tab[i][j - 1] = ' ';
 				tab[i + 1][j] = ' ';
-				return (1);
+				return (tab);
 			}
 		}
 	}
 	
-	else if (i == 27)
+	else if (i == size)
 	{
-		if (j == 27)
+		if (j == 0)
 		{
-			if ((tab[i - 1][j] == 'X') && (tab[i][j - 1] == 'X')) /* Pour la case en bas a droite */
+			if ((tab[i - 1][j] == 'X') && (tab[i][j + 1] == 'X')) /* Pour la case en bas a gauche quand i = 27 et j = 0 */
 			{
 				tab[i - 1][j] = ' ';
-				tab[i + 1][j] = ' ';
-				return (1);
+				tab[i][j + 1] = ' ';
+				return (tab);
+			}
+		}
+		else if (j == size)
+		{
+			if ((tab[i - 1][j] == 'X') && (tab[i][j - 1] == 'X')) /* Pour la case en bas a droite quand i = 27 et j = 27 */
+			{
+				tab[i - 1][j] = ' ';
+				tab[i][j - 1] = ' ';
+				return (tab);
 			}
 		}
 		else
 		{
-			if ((tab[i - 1][j] == 'X') && (tab[i][j + 1] == 'X') && (tab[i][j - 1] == 'X')) /* Pour la derniere ligne */
+			if ((tab[i][j - 1] == 'X') && (tab[i][j + 1] == 'X') && (tab[i][j - 1] == 'X')) /* Pour la derniere ligne quand i = 27*/
 			{
 				tab[i][j - 1] = ' ';
-				tab[i + 1][j] = ' ';
-				return (1);
+				tab[i - 1][j] = ' ';
+				return (tab);
 			}
 		}
 	}
 	
-	else
-	{
-		if ((tab[i - 1][j] == 'X') && (tab[i][j + 1] == 'X') && (tab[i][j + 1] == 'X') && (tab[i][j - 1] == 'X')) /* Pour la derniere ligne */
+	else if (j == 0)
+		{
+			if ((tab[i][j + 1] == 'X') && (tab[i + 1][j] == 'X') && (tab[i - 1][j] == 'X')) /* Pour la colone de gauche quand j = 0 */
 			{
-				tab[i][j - 1] = ' ';
-				tab[i - 1][j] = ' ';
-				return (1);
+				tab[i + 1][j] = ' ';
+				tab[i][j + 1] = ' ';
+				return (tab);
 			}
-	}
-
-	return (0);
+			
+		}
+		
+	else if (j == size)
+		{
+			if ((tab[i][j - 1] == 'X') && (tab[i + 1][j] == 'X') && (tab[i - 1][j] == 'X')) /* Pour la colone de gauche quand j = 0 */
+			{
+				tab[i - 1][j] = ' ';
+				tab[i][j - 1] = ' ';
+				return (tab);
+			}
+			
+		}
+		else
+		{
+			if ((tab[i - 1][j] == 'X') && (tab[i][j + 1] == 'X') && (tab[i][j + 1] == 'X') && (tab[i][j - 1] == 'X')) /* Pour le reste */
+				{
+					tab[i][j - 1] = ' ';
+					tab[i - 1][j] = ' ';
+					return (tab);
+				}
+		}
+	return (tab);
 }
 
-char	**check_exit(char **tab, int exit_orientation, int exit_position)
+char	**check_exit(char **tab, int exit_orientation, int exit_position, int size)
 {
 	if (exit_orientation == 0)
 		tab[0][exit_position] = ' ';
 		
 	else if (exit_orientation == 1)
-		tab[exit_position][28] = ' ';
+		tab[exit_position][size] = ' ';
 		
 	else if (exit_orientation == 2)
-		tab[28][exit_position] = ' ';
+		tab[size][exit_position] = ' ';
 	
 	else if (exit_orientation == 3)
 		tab[exit_position][0] = ' ';
-	return (tab);
+	return (tab);;
 }

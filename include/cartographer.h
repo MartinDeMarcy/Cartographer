@@ -12,10 +12,11 @@
 # define CARTOGRAPHER_H
 
 char	**malloc_tab(char **, int);
-char	**fill_tab(char **, int);
-char	**fill_one(char **, int, int, int);
+char	**fill_tab(char **, int, int);
+char	**fill_one(char **, int, int, int, int);
 char	**check_tab(char **, int, int, int);
-char	**check_two(char **, int, int);
-char	**check_exit(char **, int, int);
+char	**check_one(char **, int, int, int);
+char	**check_exit(char **, int, int, int);
+int	my_random(int);
 
 #endif
