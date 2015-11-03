@@ -10,12 +10,12 @@
 
 #include <stdlib.h>
 #include <time.h>
-#include "include/struct.h"
 #include "include/cartographer.h"
 
 int	main(int ac, char **av)
 {
 	int size;
+	char	**tab;
 	t_carto	*carto;
 	
 	srand (time(NULL));
@@ -29,21 +29,12 @@ int	main(int ac, char **av)
 		}
 		else
 		{
-			if (!(carto = init_struct(carto, size)))
-			{
-				my_puterr("Failed to init struct\n");
-		 		return (0);
-		 	}
-		 	my_put_nbr(carto->size);
+		 	tab = malloc_tab(tab, size);
+		 	my_put_nbr(size);
 			my_putstr("Welcome to Dedale's Amazing Maze\nGenerating a Maze of size ");
 			my_put_nbr(size);
 			my_putstr(" ...\n");
-			
-			if (!(carto = generate_maze(carto)))
-			{
-				my_puterr("Failed to generate maze\n");
-		 		return (0);
-			}
+			generate_maze(tab, size);
 		}
 	}
 	else 
@@ -51,25 +42,8 @@ int	main(int ac, char **av)
 		my_puterr("Usage: ./dedale size(9-29)\n");
 		return (0);
 	}
-
+	free(carto);
 	  return (0);
-}
-
-
-
-t_carto	*init_struct(t_carto *carto, int size)
-{
-  if (!(carto = malloc(sizeof(t_carto *))))
-    return (NULL);
-  carto->size = size;
-  carto->exit_orientation = rand() % 4;
-  carto->exit_position = rand() % size;
-  carto->center = size / 2 + 1;
-  if (!(carto = malloc_tab(carto)))
-    return (NULL);
-  if (!(carto = fill_tab(carto)))
-    return (NULL);
-  return (carto);
 }
 
 int	checker(char *str)

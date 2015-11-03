@@ -5,7 +5,7 @@
 ## Login   <pras_m@epitech.net>
 ## 
 ## Started on  Wed Oct 21 19:33:25 2015 PRAS Martin
-## Last update Fri Oct 30 21:50:00 2015 PRAS Martin
+## Last update Tue Nov  3 19:06:15 2015 PRAS Martin
 ##
 
 RM		= rm -f
@@ -14,7 +14,9 @@ SRCS		= main.c \
 		  src.c \
 		  src2.c \
 		  random.c \
-		  algo.c
+		  algo.c \
+		  print.c \
+		  tab.c
 
 NAME		= dedale
 

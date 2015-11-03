@@ -11,8 +11,10 @@
 #ifndef CARTOGRAPHER_H_
 # define CARTOGRAPHER_H
 
-t_carto	*malloc_tab(t_carto *);
-t_carto	*fill_tab(t_carto *);
+char	**malloc_tab(char **, int);
+char	**fill_tab(char **, int);
+char	**fill_one(char **, int, int, int);
+char	**check_tab(char **, int);
 t_carto	*init_struct(t_carto *, int);
 
 #endif

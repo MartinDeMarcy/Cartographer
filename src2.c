@@ -8,7 +8,6 @@
 ** Last update Fri Oct 30 21:49:12 2015 PRAS Martin
 */
 
-#include "include/struct.h"
 #include "include/cartographer.h"
 
 void	my_putchar_err(char c)
